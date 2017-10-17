@@ -1,0 +1,32 @@
+This program implements the classic random forest algorithm to classify
+activities based on sensor data. The forest is built using a subspace sampling 
+algorithm to create the forest. The trees are built using the classic 
+information gain ratio algorithm. They are then pruned using the reduced error 
+rate validation algoithm. The forest was then tested on a group of samples 
+held out of the trainign set to create a confusion matrix and F statistic. All
+code was written from scratch in order to learn the algorithms.
+
+The program input in a single CSV file showing senor and demographic data of
+test subjects, and the activity category, as each row. The data came from a 
+public data set available here: 
+https://archive.ics.uci.edu/ml/datasets/Wearable+Computing%3A+Classification+of+Body+Postures+and+Movements+(PUC-Rio)
+It formed the basis of the following paper: 
+http://groupware.les.inf.puc-rio.br/work.jsf?p1=10335
+
+To run it: python ActivityClassifier.py <name of data file>
+
+Like all random forests, the program is both incredibly accurate and incredibly
+slow to train. The final confusion matrix and statistics were as follows:
+                                        predicted
+   actual          sitting  sittingdown     standing   standingup      walking
+      sitting        12795            7            0           16            0
+  sittingdown            3         2765            4           65           15
+     standing            0           26        11565           73           67
+   standingup            7           47           22         2923           26
+      walking            0           29           89           47        10817
+Category: sitting Precision: 0.999219055057 Recall: 0.998205648307 Balanced F Statistic: 0.998712094603
+Category: sittingdown Precision: 0.962073764788 Recall: 0.969495091164 Balanced F Statistic: 0.965770171149
+Category: standing Precision: 0.990154109589 Recall: 0.985849458699 Balanced F Statistic: 0.987997095383
+Category: standingup Precision: 0.935659411012 Recall: 0.966280991736 Balanced F Statistic: 0.95072369491
+Category: walking Precision: 0.990114416476 Recall: 0.984975414314 Balanced F Statistic: 0.98753822979
+Overall: Precision: 0.975444151384  Recall: 0.980961320844 Balanced F Statistic: 0.978148257167
